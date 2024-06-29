@@ -11,15 +11,21 @@ OntologyAgent is an adaptive autonomous AI agent designed for scaling and mainta
 ## Installation
 
 1. **Clone the Repository**
+    ```bash
     git clone https://github.com/inquisitour/OntologyAgent.git
     cd OntologyAgent
+    ```
 
 2. **Add LLMs4OM as a Submodule**
+    ```bash
     git submodule add https://github.com/HamedBabaei/LLMs4OM.git LLMs4OM
     git submodule update --init --recursive
+    ```
 
 3. **Install Dependencies**
+    ```bash
     pip install -r requirements.txt
+    ```
 
 4. **Configure Environment Variables**
     - Rename the `.env-example` file to `.env`.
@@ -28,20 +34,32 @@ OntologyAgent is an adaptive autonomous AI agent designed for scaling and mainta
 ## Usage
 
 ### Create Ontology
+
 To create and save an ontology:
-    python main.py create
+```bash
+python main.py create
+```
 
 ### Process Ontology
+
 To load and process an ontology:
-    python main.py process
+```bash
+python main.py process
+```
 
 ### Align Ontologies
+
 To align two ontologies:
-    python main.py align
+```bash
+python main.py align
+```
 
 ### Match Ontologies
+
 To match ontologies using LLMs4OM:
-    python main.py match
+```bash
+python main.py match
+```
 
 ## Project Structure
 
