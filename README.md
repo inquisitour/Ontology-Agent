@@ -25,7 +25,7 @@
   </a>
 </p>
 
-Ontology Agent is an adaptive autonomous AI agent designed for scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
+Ontology Agent is an adaptive autonomous AI agent designed for creating, scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
 
 ## Features
 
@@ -55,6 +55,10 @@ Ontology Agent is an adaptive autonomous AI agent designed for scaling and maint
 4. **Configure Environment Variables**
     - Rename the `.env-example` file to `.env`.
     - Update the `.env` file with appropriate tokens if you plan to use specific LLMs like LLaMA-2 or GPT-3.5. If not, you can use dummy tokens.
+
+5. **Configuration for ontology**
+
+- You can adjust the `config/ontology_config.json` file for the definitions of classes, properties, individuals, disjoint classes, equivalent classes, and general axioms of your ontology.
 
 ## Usage
 
@@ -97,8 +101,15 @@ Ontology-Agent/
 │   ├── requirements.txt
 │   ├── src/
 │   └── ...
+│
+├── config/
+│   ├── ontology_config.json
+│
 ├── data/
 │   ├── my_ontology.owl
+│
+├── images/
+│   ├── ontoAgent.jpg
 │
 ├── modules/
 │   ├── __init__.py
