@@ -3,3 +3,7 @@ deeponto
 torch
 torchvision
 torchaudio
+transformers
+datasets
+sentence-transformers
+openai
