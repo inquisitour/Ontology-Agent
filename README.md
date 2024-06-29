@@ -163,11 +163,3 @@ For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
 ---
 
 For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
-
-## Contact
-
-For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
-
----
-
-For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
