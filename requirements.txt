@@ -1,0 +1,5 @@
+owlready2
+deeponto
+torch
+torchvision
+torchaudio
