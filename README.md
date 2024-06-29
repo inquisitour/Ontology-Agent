@@ -1,5 +1,7 @@
 # OntologyAgent
 
+![OntologyAgent](images/ontoAgent.jpg)
+
 OntologyAgent is an adaptive autonomous AI agent designed for scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
 
 ## Features
