@@ -1,3 +1,4 @@
+from owlready2 import get_ontology, sync_reasoner
 from LLMs4OM.ontomap.ontology import MouseHumanOMDataset
 from LLMs4OM.ontomap.base import BaseConfig
 from LLMs4OM.ontomap.evaluation.evaluator import evaluator
@@ -6,11 +7,13 @@ from LLMs4OM.ontomap.ontology_matchers import MistralLLMBertRAG
 from LLMs4OM.ontomap.postprocess import process
 
 class OntologyMatcher:
-    def setup(self):
+    def __init__(self, ontology_path1, ontology_path2):
+        self.ontology1 = get_ontology(ontology_path1).load()
+        self.ontology2 = get_ontology(ontology_path2).load()
         self.config = BaseConfig(approach='rag').get_args(device='cuda', batch_size=16)
         self.config.root_dir = "datasets"
 
-    def match_ontologies(self, source_ontology_path, target_ontology_path):
+    def match_ontologies(self):
         ontology = MouseHumanOMDataset().collect(root_dir=self.config.root_dir)
         encoded_inputs = IRILabelInRAGEncoder()(ontology)
         model = MistralLLMBertRAG(self.config.MistralBertRAG)

@@ -1,7 +1,7 @@
 from modules.ontology_processor import OntologyProcessor
 
 def main():
-    processor = OntologyProcessor("data/my_ontology.owl")
+    processor = OntologyProcessor("my_dynamic_ontology.owl")
     classes, properties = processor.query_entities()
     print(f"Classes: {classes}\nProperties: {properties}")
 
