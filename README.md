@@ -1,4 +1,4 @@
-# OntologyAgent
+# Ontology Agent
 
 <p align="center">
   <img src="images/ontoAgent.jpg" alt="OntologyAgent">
