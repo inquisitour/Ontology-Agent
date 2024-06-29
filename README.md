@@ -71,7 +71,7 @@ OntologyAgent/
 └── README.md
 ```
 
-## Detailed Module Descriptions
+## Modules
 
 ### `modules/ontology_creator.py`
 Module for creating and modifying ontologies using Owlready2.
