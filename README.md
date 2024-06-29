@@ -4,6 +4,27 @@
   <img src="images/ontoAgent.jpg" alt="OntologyAgent">
 </p>
 
+<p align="center">
+  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/pre-commit.yml">
+    <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen" alt="pre-commit enabled">
+  </a>
+  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/code_style.yml">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
+  </a>
+  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/imports.yml">
+    <img src="https://img.shields.io/badge/imports-isort-1c91e6" alt="Imports: isort">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache-2.0">
+  </a>
+  <a href="https://example.com/paper.pdf">
+    <img src="https://img.shields.io/badge/Paper-pdf-red" alt="Paper">
+  </a>
+  <a href="https://example.com/supplementary_material.pdf">
+    <img src="https://img.shields.io/badge/Supplementary%20Material-pdf-black" alt="Supplementary Material">
+  </a>
+</p>
+
 OntologyAgent is an adaptive autonomous AI agent designed for scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
 
 ## Features
@@ -134,6 +155,14 @@ We welcome contributions to enhance the capabilities of OntologyAgent. Please fo
 ## License
 
 This project is licensed under the Apache-2.0 License. See the LICENSE file for details.
+
+## Contact
+
+For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
+
+---
+
+For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
 
 ## Contact
 
