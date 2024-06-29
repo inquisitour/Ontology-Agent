@@ -58,7 +58,8 @@ Ontology Agent is an adaptive autonomous AI agent designed for creating, scaling
 
 5. **Configuration for ontology**
 
-- You can adjust the `config/ontology_config.json` file for the definitions of classes, properties, individuals, disjoint classes, equivalent classes, and general axioms of your ontology.
+- Customize the config/ontology_config.json file to define your ontology's classes, properties, individuals, disjoint classes, equivalent classes, and general axioms. This configuration file allows you to 
+  specify the structure and elements of your ontology flexibly.
 
 ## Usage
 
