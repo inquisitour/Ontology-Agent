@@ -45,6 +45,7 @@ To match ontologies using LLMs4OM:
 
 ## Project Structure
 
+```
 OntologyAgent/
 │
 ├── LLMs4OM/
@@ -74,6 +75,7 @@ OntologyAgent/
 ├── requirements.txt
 │
 └── README.md
+```
 
 ## Modules
 
