@@ -1,6 +1,8 @@
 # OntologyAgent
 
-![OntologyAgent](images/ontoAgent.jpg)
+<p align="center">
+  <img src="images/ontoAgent.jpg" alt="OntologyAgent">
+</p>
 
 OntologyAgent is an adaptive autonomous AI agent designed for scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
 
@@ -134,6 +136,12 @@ We welcome contributions to enhance the capabilities of OntologyAgent. Please fo
 This project is licensed under the Apache-2.0 License. See the LICENSE file for details.
 
 ## Contact
+
+For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
+
+---
+
+For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
 
 For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
 
