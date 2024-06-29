@@ -1,4 +1,3 @@
-
 # OntologyAgent
 
 OntologyAgent is an adaptive autonomous AI agent designed for scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
@@ -12,55 +11,48 @@ OntologyAgent is an adaptive autonomous AI agent designed for scaling and mainta
 ## Installation
 
 1. **Clone the Repository**
-    ```bash
     git clone https://github.com/inquisitour/OntologyAgent.git
     cd OntologyAgent
-    ```
 
-2. **Install Dependencies**
-    ```bash
+2. **Add LLMs4OM as a Submodule**
+    git submodule add https://github.com/HamedBabaei/LLMs4OM.git LLMs4OM
+    git submodule update --init --recursive
+
+3. **Install Dependencies**
     pip install -r requirements.txt
-    ```
 
-3. **Configure Environment Variables**
+4. **Configure Environment Variables**
     - Rename the `.env-example` file to `.env`.
     - Update the `.env` file with appropriate tokens if you plan to use specific LLMs like LLaMA-2 or GPT-3.5. If not, you can use dummy tokens.
 
 ## Usage
 
 ### Create Ontology
-
 To create and save an ontology:
-```bash
-python main.py create
-```
+    python main.py create
 
 ### Process Ontology
-
 To load and process an ontology:
-```bash
-python main.py process
-```
+    python main.py process
 
 ### Align Ontologies
-
 To align two ontologies:
-```bash
-python main.py align
-```
+    python main.py align
 
 ### Match Ontologies
-
 To match ontologies using LLMs4OM:
-```bash
-python main.py match
-```
+    python main.py match
 
 ## Project Structure
 
-```
 OntologyAgent/
 │
+├── LLMs4OM/
+│   ├── .env-example
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── src/
+│   └── ...
 ├── data/
 │   ├── my_ontology.owl
 │
@@ -82,7 +74,6 @@ OntologyAgent/
 ├── requirements.txt
 │
 └── README.md
-```
 
 ## Modules
 
@@ -119,3 +110,11 @@ We welcome contributions to enhance the capabilities of OntologyAgent. Please fo
 ## License
 
 This project is licensed under the Apache-2.0 License. See the LICENSE file for details.
+
+## Contact
+
+For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
+
+---
+
+For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
