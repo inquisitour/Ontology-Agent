@@ -1,11 +1,7 @@
-from modules.ontology_creator import OntologyCreator
+from modules import ontology_creator
 
 def main():
-    creator = OntologyCreator("http://example.org/my_ontology.owl")
-    creator.create_classes()
-    creator.create_properties()
-    creator.create_individuals()
-    creator.save_ontology("data/my_ontology.owl")
+    ontology_creator.create_ontology_from_config("ontology_config.json")
 
 if __name__ == "__main__":
     main()
