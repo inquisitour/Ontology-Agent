@@ -1,4 +1,4 @@
-# Ontology Agent [Under Development]
+# OntologyAgent: AI-Powered Ontology Management System [Under Development]
 
 <p align="center">
   <img src="images/ontoAgent.jpg" alt="OntologyAgent">
@@ -25,15 +25,25 @@
   </a>
 </p>
 
-Ontology Agent is an adaptive autonomous AI agent designed for creating, scaling and maintaining ontologies. It leverages the strengths of Owlready2 for creation and modification, DeepOnto for advanced processing, and LLMs4OM for sophisticated ontology matching. This agent is capable of creating, modifying, and processing ontologies autonomously for enhanced decision-making and reasoning functions.
+## 🌟 Introduction
 
-## Features
+Welcome to OntologyAgent, your all-in-one solution for creating, scaling, and maintaining ontologies with the power of AI! This adaptive autonomous agent combines the robust capabilities of Owlready2, the advanced processing of DeepOnto, and the sophisticated matching algorithms of LLMs4OM to revolutionize your ontology management workflow.
 
-- **Creation and Modification**: Uses Owlready2 for defining classes, properties, and individuals.
-- **Advanced Processing**: Employs DeepOnto for querying entities, performing reasoning, and ontology alignment.
-- **Sophisticated Matching**: Utilizes LLMs4OM for effective ontology matching using large language models.
+Whether you're a seasoned ontology engineer or just starting your journey in knowledge representation, OntologyAgent is designed to streamline your work and enhance your decision-making processes.
 
-## Installation
+## 🚀 Features
+
+OntologyAgent is packed with powerful features to make your ontology management tasks a breeze:
+
+- **Intelligent Creation and Modification**: Harness the power of Owlready2 to effortlessly define classes, properties, and individuals.
+- **Advanced Processing and Reasoning**: Leverage DeepOnto's capabilities for sophisticated querying, reasoning, and ontology alignment.
+- **State-of-the-Art Matching**: Utilize cutting-edge large language models through LLMs4OM for precise and efficient ontology matching.
+- **Flexible Configuration**: Easily customize your ontology structure using our intuitive JSON configuration system.
+- **Comprehensive Testing**: Ensure reliability with our extensive pytest-based testing suite.
+
+## 🛠️ Installation
+
+Get up and running with OntologyAgent in just a few simple steps:
 
 1. **Clone the Repository**
     ```bash
@@ -53,125 +63,108 @@ Ontology Agent is an adaptive autonomous AI agent designed for creating, scaling
     ```
 
 4. **Configure Environment Variables**
-    - Rename the `.env-example` file to `.env`.
-    - Update the `.env` file with appropriate tokens if you plan to use specific LLMs like LLaMA-2 or GPT-3.5. If not, you can use dummy tokens.
+    - Rename `.env-example` to `.env`
+    - Update `.env` with appropriate tokens for LLMs (e.g., LLaMA-2 or GPT-3.5)
 
-5. **Configuration for ontology**
+5. **Customize Your Ontology**
+    - Edit `config/ontology_config.json` to define your ontology structure
 
-- Customize the `config/ontology_config.json` file to define your ontology's classes, properties, individuals, disjoint classes, equivalent classes, and general axioms. This configuration file allows you to 
-  specify the structure and elements of your ontology flexibly.
+## 💡 Usage
 
-## Usage
+OntologyAgent offers a simple command-line interface for all your ontology management needs:
 
 ### Create Ontology
-
-To create and save an ontology:
 ```bash
 python main.py create
 ```
 
 ### Process Ontology
-
-To load and process an ontology:
 ```bash
 python main.py process
 ```
 
 ### Align Ontologies
-
-To align two ontologies:
 ```bash
 python main.py align
 ```
 
 ### Match Ontologies
-
-To match ontologies using LLMs4OM:
 ```bash
 python main.py match
 ```
 
-## Project Structure
+## 📁 Project Structure
+
+Our well-organized project structure ensures easy navigation and maintenance:
 
 ```
-Ontology-Agent/
-│
-├── LLMs4OM/
-│   ├── .env-example
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── src/
-│   └── ...
-│
+OntologyAgent/
 ├── config/
-│   ├── ontology_config.json
-│
+│   ├── ontology_agent.ini
+│   ├── ontology_config_schema.json
 ├── data/
-│   ├── my_ontology.owl
-│
-├── images/
-│   ├── ontoAgent.jpg
-│
 ├── modules/
 │   ├── __init__.py
+│   ├── config.py
 │   ├── ontology_creator.py
 │   ├── ontology_processor.py
 │   ├── ontology_aligner.py
 │   ├── ontology_matcher.py
-│
 ├── scripts/
 │   ├── create_ontology.py
 │   ├── process_ontology.py
 │   ├── align_ontologies.py
 │   ├── match_ontologies.py
-│
+├── tests/
+│   ├── __init__.py
+│   ├── test_ontology_creator.py
+│   ├── test_ontology_processor.py
+│   ├── test_ontology_aligner.py
+│   ├── test_ontology_matcher.py
 ├── main.py
-│
 ├── requirements.txt
-│
-└── README.md
+├── setup.py
+├── README.md
+├── .gitignore
 ```
 
-## Modules
+## 🧠 Core Modules
 
-### `modules/ontology_creator.py`
-Module for creating and modifying ontologies using Owlready2.
+OntologyAgent's power comes from its four core modules:
 
-### `modules/ontology_processor.py`
-Module for loading and processing ontologies with DeepOnto.
+- **ontology_creator.py**: Create and modify ontologies with ease using Owlready2.
+- **ontology_processor.py**: Process and analyze ontologies using DeepOnto's advanced capabilities.
+- **ontology_aligner.py**: Align ontologies with precision using BERTMap in DeepOnto.
+- **ontology_matcher.py**: Match ontologies efficiently with LLMs4OM's state-of-the-art algorithms.
 
-### `modules/ontology_aligner.py`
-Module for aligning ontologies using BERTMap in DeepOnto.
+## 🧪 Testing
 
-### `modules/ontology_matcher.py`
-Module for matching ontologies using LLMs4OM.
+We take quality seriously. Our comprehensive test suite ensures reliability:
 
-## Scripts
+```bash
+pytest tests/
+```
 
-### `scripts/create_ontology.py`
-Script to create and save the ontology.
+## 🤝 Contributing
 
-### `scripts/process_ontology.py`
-Script to load and process the ontology.
+We believe in the power of community! If you have ideas to enhance OntologyAgent, here's how you can contribute:
 
-### `scripts/align_ontologies.py`
-Script to align two ontologies.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### `scripts/match_ontologies.py`
-Script to match ontologies using LLMs4OM.
+## 📄 License
 
-## Contributing
+This project is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE) file for details.
 
-We welcome contributions to enhance the capabilities of OntologyAgent. Please fork the repository and create a pull request with your changes.
+## 📞 Contact
 
-## License
+Have questions or suggestions? We'd love to hear from you!
 
-This project is licensed under the Apache-2.0 License. See the LICENSE file for details.
-
-## Contact
-
-For any questions or suggestions, please contact [deshmukhpratik931@gmail.com].
+Email: [deshmukhpratik931@gmail.com](mailto:deshmukhpratik931@gmail.com)
 
 ---
 
-For more detailed information, visit the [OntologyAgent GitHub repository](https://github.com/inquisitour/OntologyAgent).
+Dive deeper into the world of OntologyAgent by visiting our [GitHub repository](https://github.com/inquisitour/OntologyAgent). Start your journey towards effortless ontology management today!
