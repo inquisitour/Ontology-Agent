@@ -1,17 +1,17 @@
-# OntologyAgent: AI-Powered Ontology Management System [Under Development]
+# Ontology Agent [Under Development]
 
 <p align="center">
-  <img src="images/ontoAgent.jpg" alt="OntologyAgent">
+  <img src="images/ontoAgent.jpg" alt="Ontology-Agent">
 </p>
 
 <p align="center">
-  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/pre-commit.yml">
+  <a href="https://github.com/inquisitour/Ontology-Agent/actions/workflows/pre-commit.yml">
     <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen" alt="pre-commit enabled">
   </a>
-  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/code_style.yml">
+  <a href="https://github.com/inquisitour/Ontology-Agent/actions/workflows/code_style.yml">
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
   </a>
-  <a href="https://github.com/inquisitour/OntologyAgent/actions/workflows/imports.yml">
+  <a href="https://github.com/inquisitour/Ontology-Agent/actions/workflows/imports.yml">
     <img src="https://img.shields.io/badge/imports-isort-1c91e6" alt="Imports: isort">
   </a>
   <a href="LICENSE">
@@ -27,13 +27,13 @@
 
 ## 🌟 Introduction
 
-Welcome to OntologyAgent, your all-in-one solution for creating, scaling, and maintaining ontologies with the power of AI! This adaptive autonomous agent combines the robust capabilities of Owlready2, the advanced processing of DeepOnto, and the sophisticated matching algorithms of LLMs4OM to revolutionize your ontology management workflow.
+Welcome to Ontology Agent, your all-in-one solution for creating, scaling, and maintaining ontologies with the power of AI! This adaptive autonomous agent combines the robust capabilities of Owlready2, the advanced processing of DeepOnto, and the sophisticated matching algorithms of LLMs4OM to revolutionize your ontology management workflow.
 
-Whether you're a seasoned ontology engineer or just starting your journey in knowledge representation, OntologyAgent is designed to streamline your work and enhance your decision-making processes.
+Whether you're a seasoned ontology engineer or just starting your journey in knowledge representation, Ontology Agent is designed to streamline your work and enhance your decision-making processes.
 
 ## 🚀 Features
 
-OntologyAgent is packed with powerful features to make your ontology management tasks a breeze:
+Ontology Agent is packed with powerful features to make your ontology management tasks a breeze:
 
 - **Intelligent Creation and Modification**: Harness the power of Owlready2 to effortlessly define classes, properties, and individuals.
 - **Advanced Processing and Reasoning**: Leverage DeepOnto's capabilities for sophisticated querying, reasoning, and ontology alignment.
@@ -43,12 +43,12 @@ OntologyAgent is packed with powerful features to make your ontology management 
 
 ## 🛠️ Installation
 
-Get up and running with OntologyAgent in just a few simple steps:
+Get up and running with Ontology Agent in just a few simple steps:
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/inquisitour/OntologyAgent.git
-    cd OntologyAgent
+    git clone https://github.com/inquisitour/Ontology-Agent.git
+    cd Ontology-Agent
     ```
 
 2. **Add LLMs4OM as a Submodule**
@@ -71,7 +71,7 @@ Get up and running with OntologyAgent in just a few simple steps:
 
 ## 💡 Usage
 
-OntologyAgent offers a simple command-line interface for all your ontology management needs:
+Ontology Agent offers a simple command-line interface for all your ontology management needs:
 
 ### Create Ontology
 ```bash
@@ -98,7 +98,7 @@ python main.py match
 Our well-organized project structure ensures easy navigation and maintenance:
 
 ```
-OntologyAgent/
+Ontology-Agent/
 ├── config/
 │   ├── ontology_agent.ini
 │   ├── ontology_config_schema.json
@@ -130,7 +130,7 @@ OntologyAgent/
 
 ## 🧠 Core Modules
 
-OntologyAgent's power comes from its four core modules:
+Ontology Agent's power comes from its four core modules:
 
 - **ontology_creator.py**: Create and modify ontologies with ease using Owlready2.
 - **ontology_processor.py**: Process and analyze ontologies using DeepOnto's advanced capabilities.
@@ -147,7 +147,7 @@ pytest tests/
 
 ## 🤝 Contributing
 
-We believe in the power of community! If you have ideas to enhance OntologyAgent, here's how you can contribute:
+We believe in the power of community! If you have ideas to enhance Ontology Agent, here's how you can contribute:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -167,4 +167,4 @@ Email: [deshmukhpratik931@gmail.com](mailto:deshmukhpratik931@gmail.com)
 
 ---
 
-Dive deeper into the world of OntologyAgent by visiting our [GitHub repository](https://github.com/inquisitour/OntologyAgent). Start your journey towards effortless ontology management today!
+Dive deeper into the world of Ontology Agent by visiting our [GitHub repository](https://github.com/inquisitour/Ontology-Agent). Start your journey towards effortless ontology management today!
