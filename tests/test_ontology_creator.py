@@ -1,7 +1,7 @@
 import pytest
 from modules.ontology_creator import create_ontology_from_config
 from owlready2 import get_ontology
-import os
+import json
 
 @pytest.fixture
 def sample_config():
