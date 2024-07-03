@@ -35,6 +35,7 @@ class OntologyCreator:
                 self._handle_equivalent_classes(ontology_config.get("equivalent_classes", []))
                 self._handle_general_axioms(ontology_config.get("general_axioms", []))
                 self._add_annotations(ontology_config.get("annotations", {}))
+                logger.info("Annotations added to the ontology")
 
             output_dir = config.get('General', 'output_dir')
             if not os.path.exists(output_dir):
@@ -44,6 +45,10 @@ class OntologyCreator:
             self.onto.save(file=output_path, format="rdfxml")
             default_world.save()
             logger.info(f"Ontology created and saved successfully to {output_path}")
+
+            # Reload the ontology to ensure all changes are properly saved
+            reloaded_onto = get_ontology(output_path).load()
+            logger.info("Ontology reloaded for verification")
         
         except FileNotFoundError:
             logger.error(f"Configuration file not found: {config_path}")
@@ -62,16 +67,17 @@ class OntologyCreator:
                 self.classes[cls] = types.new_class(cls, (Thing,))
             else:
                 self.classes[cls] = types.new_class(cls, (self.classes[parent],))
+            logger.debug(f"Created class: {cls} with parent: {parent}")
 
     def _create_object_properties(self, properties_config: Dict[str, Dict]) -> None:
         for prop, details in properties_config.items():
-            self._create_property(prop, ObjectProperty, details)
+            self._create_property(prop, ObjectProperty, details, unique_range=False)
 
     def _create_data_properties(self, properties_config: Dict[str, Dict]) -> None:
         for prop, details in properties_config.items():
-            self._create_property(prop, DataProperty, details)
+            self._create_property(prop, DataProperty, details, unique_range=True)
 
-    def _create_property(self, prop_name: str, prop_type: Union[Type[ObjectProperty], Type[DataProperty]], details: Dict) -> None:
+    def _create_property(self, prop_name: str, prop_type: Union[Type[ObjectProperty], Type[DataProperty]], details: Dict, unique_range: bool = False) -> None:
         prop = types.new_class(prop_name, (prop_type,))
         for etype in details.get("property_type", []):
             if etype == "FunctionalProperty":
@@ -81,12 +87,19 @@ class OntologyCreator:
             elif etype == "TransitiveProperty":
                 prop.is_a.append(TransitiveProperty)
             # Add more property types as needed
+
         prop.domain = [self.classes[cls] for cls in details["domain"]]
-        prop.range = [self._get_range_type(r) for r in details["range"]]
+        
+        if unique_range:
+            prop.range = list(set(self._get_range_type(r) for r in details["range"]))
+        else:
+            prop.range = [self._get_range_type(r) for r in details["range"]]
         
         if "inverse_property" in details:
             inv_prop = types.new_class(details["inverse_property"], (ObjectProperty,))
             inv_prop.inverse_property = prop
+        
+        logger.debug(f"Created property: {prop_name} of type {prop_type.__name__}")
 
     def _get_range_type(self, range_type: str):
         if range_type == "int":
@@ -116,10 +129,12 @@ class OntologyCreator:
                 else:
                     for value in values:
                         getattr(ind, prop.name).append(value)
+            logger.debug(f"Created individual: {individual['name']} of class {individual['class']}")
 
     def _handle_disjoint_classes(self, disjoint_classes: List[str]) -> None:
         if disjoint_classes:
             AllDisjoint([self.classes[cls] for cls in disjoint_classes])
+            logger.debug(f"Set disjoint classes: {disjoint_classes}")
 
     def _handle_equivalent_classes(self, equivalent_classes: List[Dict]) -> None:
         for eq in equivalent_classes:
@@ -127,6 +142,7 @@ class OntologyCreator:
                 logger.error(f"Class '{eq['class']}' or its equivalent '{eq['equivalent_to'][0]}' is not defined in the ontology classes.")
                 continue
             self.classes[eq["class"]].equivalent_to.append(self.classes[eq["equivalent_to"][0]])
+            logger.debug(f"Set equivalent classes: {eq['class']} and {eq['equivalent_to'][0]}")
 
     def _handle_general_axioms(self, general_axioms: List[Dict]) -> None:
         for axiom in general_axioms:
@@ -134,15 +150,20 @@ class OntologyCreator:
                 for prop_name in axiom["properties"]:
                     prop = getattr(self.onto, prop_name)
                     prop.is_a.append(TransitiveProperty)
+                    logger.debug(f"Set {prop_name} as TransitiveProperty")
             # Add more axiom types as needed
 
     def _add_annotations(self, annotations_config: Dict[str, Dict]) -> None:
         for ann, details in annotations_config.items():
             ann_prop = types.new_class(ann, (AnnotationProperty,))
             for target, values in details.items():
-                entity = getattr(self.onto, target)
-                for value in values:
-                    entity.comment.append(value) 
+                if hasattr(self.onto, target):
+                    entity = getattr(self.onto, target)
+                    for value in values:
+                        ann_prop[entity].append(value)
+                    logger.debug(f"Added annotation {ann} to {target} with values {values}")
+                else:
+                    logger.warning(f"Target '{target}' for annotation '{ann}' not found in the ontology.")
 
 def create_ontology_from_config(config_path: str) -> None:
     creator = OntologyCreator()
