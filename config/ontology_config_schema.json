@@ -26,8 +26,7 @@
           "range": {
             "type": "array",
             "items": {
-              "type": "string",
-              "enum": ["int", "float", "str", "bool", "datetime.date", "datetime.time", "datetime.datetime"]
+              "type": "string"
             }
           },
           "inverse_property": {
@@ -89,12 +88,12 @@
             "additionalProperties": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": ["string", "number", "boolean"]
               }
             }
           }
         },
-        "required": ["name", "class", "attributes"]
+        "required": ["name", "class"]
       }
     },
     "disjoint_classes": {

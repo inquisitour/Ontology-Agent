@@ -38,7 +38,8 @@ def sample_config():
             "Person": "Thing",
             "Student": "Person",
             "Course": "Thing",
-            "Human": "Thing"
+            "Human": "Thing",
+            "Professor": "Person"
         },
         "object_properties": {
             "hasParent": {
@@ -50,6 +51,10 @@ def sample_config():
                 "domain": ["Student"],
                 "range": ["Course"],
                 "property_type": ["FunctionalProperty"]
+            },
+            "teaches": {
+                "domain": ["Professor"],
+                "range": ["Course"]
             }
         },
         "data_properties": {
@@ -81,6 +86,13 @@ def sample_config():
                 "class": "Course",
                 "attributes": {
                     "hasStartTime": ["09:00:00"]
+                }
+            },
+            {
+                "name": "ProfSmith",
+                "class": "Professor",
+                "attributes": {
+                    "hasAge": [45]
                 }
             }
         ],
@@ -172,17 +184,25 @@ def test_create_ontology_from_config(ontology_creator, config_file, test_config,
     assert "Person" in class_names
     assert "Student" in class_names
     assert "Course" in class_names
+    assert "Professor" in class_names
     assert onto.Student in list(onto.Person.subclasses())
+    assert onto.Professor in list(onto.Person.subclasses())
     
     # Test object properties
     assert "hasParent" in object_property_names
     assert "enrolledIn" in object_property_names
+    assert "teaches" in object_property_names
     hasParent = onto.hasParent
     enrolledIn = onto.enrolledIn
+    teaches = onto.teaches
     assert onto.Person in list(hasParent.domain)
     assert onto.Person in list(hasParent.range)
     assert TransitiveProperty in list(hasParent.is_a)
     assert FunctionalProperty in list(enrolledIn.is_a)
+    assert onto.Student in list(enrolledIn.domain)
+    assert onto.Course in list(enrolledIn.range)
+    assert onto.Professor in list(teaches.domain)
+    assert onto.Course in list(teaches.range)
     
     # Test data properties
     assert "hasAge" in data_property_names
@@ -194,23 +214,31 @@ def test_create_ontology_from_config(ontology_creator, config_file, test_config,
     assert onto.Person in list(hasAge.domain)
     assert int in list(hasAge.range)
     assert FunctionalProperty in list(hasAge.is_a)
+    assert onto.Person in list(hasBirthDate.domain)
     assert date in list(hasBirthDate.range)
+    assert onto.Course in list(hasStartTime.domain)
     assert datetime.time in list(hasStartTime.range)
     
     # Test individuals
     assert "John" in individual_names
     assert "Math101" in individual_names
+    assert "ProfSmith" in individual_names
     john = onto.John
     math101 = onto.Math101
+    prof_smith = onto.ProfSmith
     
     print(f"John's hasAge type: {type(john.hasAge)}, value: {john.hasAge}")
     print(f"John's hasBirthDate type: {type(john.hasBirthDate)}, value: {john.hasBirthDate}")
     print(f"Math101's hasStartTime type: {type(math101.hasStartTime)}, value: {math101.hasStartTime}")
+    print(f"ProfSmith's hasAge type: {type(prof_smith.hasAge)}, value: {prof_smith.hasAge}")
     
     assert isinstance(john, onto.Student)
+    assert isinstance(math101, onto.Course)
+    assert isinstance(prof_smith, onto.Professor)
     
     # Check hasAge
     assert john.hasAge == 30 or john.hasAge == [30] or john.hasAge == ['30']
+    assert prof_smith.hasAge == 45 or prof_smith.hasAge == [45] or prof_smith.hasAge == ['45']
     
     # Check hasBirthDate
     expected_date = date(1993, 5, 15)
@@ -218,8 +246,6 @@ def test_create_ontology_from_config(ontology_creator, config_file, test_config,
             john.hasBirthDate == [expected_date] or 
             john.hasBirthDate == '1993-05-15' or 
             john.hasBirthDate == ['1993-05-15'])
-    
-    assert isinstance(math101, onto.Course)
     
     # Check hasStartTime
     expected_time = datetime.time(9, 0)

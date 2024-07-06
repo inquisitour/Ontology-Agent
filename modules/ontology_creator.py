@@ -79,21 +79,25 @@ class OntologyCreator:
 
     def _create_property(self, prop_name: str, prop_type: Union[Type[ObjectProperty], Type[DataProperty]], details: Dict, unique_range: bool = False) -> None:
         prop = types.new_class(prop_name, (prop_type,))
-        for etype in details.get("property_type", []):
-            if etype == "FunctionalProperty":
-                prop.is_a.append(FunctionalProperty)
-            elif etype == "InverseFunctionalProperty":
-                prop.is_a.append(InverseFunctionalProperty)
-            elif etype == "TransitiveProperty":
-                prop.is_a.append(TransitiveProperty)
-            # Add more property types as needed
+        
+        # Assign property types correctly
+        property_types = details.get("property_type", [])
+        if "FunctionalProperty" in property_types and FunctionalProperty not in prop.is_a:
+            prop.is_a.append(FunctionalProperty)
+        if "InverseFunctionalProperty" in property_types and InverseFunctionalProperty not in prop.is_a:
+            prop.is_a.append(InverseFunctionalProperty)
+        if "TransitiveProperty" in property_types and TransitiveProperty not in prop.is_a:
+            prop.is_a.append(TransitiveProperty)
 
         prop.domain = [self.classes[cls] for cls in details["domain"]]
         
-        if unique_range:
-            prop.range = list(set(self._get_range_type(r) for r in details["range"]))
-        else:
-            prop.range = [self._get_range_type(r) for r in details["range"]]
+        if prop_type == ObjectProperty:
+            prop.range = [self.classes[r] for r in details["range"]]
+        else:  # DataProperty
+            if unique_range:
+                prop.range = list(set(self._get_range_type(r) for r in details["range"]))
+            else:
+                prop.range = [self._get_range_type(r) for r in details["range"]]
         
         if "inverse_property" in details:
             inv_prop = types.new_class(details["inverse_property"], (ObjectProperty,))
@@ -122,7 +126,7 @@ class OntologyCreator:
     def _create_individuals(self, individuals_config: List[Dict]) -> None:
         for individual in individuals_config:
             ind = self.classes[individual["class"]](individual["name"])
-            for attr, values in individual["attributes"].items():
+            for attr, values in individual.get("attributes", {}).items():
                 prop = getattr(self.onto, attr)
                 if prop.is_functional_for(ind.__class__):
                     setattr(ind, prop.name, values[0])
